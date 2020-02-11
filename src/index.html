@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
+    <script src="js/image_handler.js"></script>
 <body>
 
 <h1>Hello</h1>
-<form action="file_upload.php" method="post" enctype="multipart/form-data">
+<form action="php/file_upload.php" method="post" enctype="multipart/form-data">
     Select Image File to Upload:
     <input type="file" name="file">
     <input type="submit" name="submit" value="Upload">
 </form>
+
+<ul id="img_names_ul">
+
+</ul>
+<button onclick="listImages()">List images</button>
 
 </body>
 </html>
