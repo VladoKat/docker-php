@@ -30,23 +30,25 @@ function listImages() {
 function handleClickOnImg(event){
     console.log(event.srcElement.innerText);
     console.log(event);
-    var id = event.srcElement.innerText.split('-')[0];
-    console.log(id);
-    console.log(loadPictureWithId(id));
+    var groupName = event.srcElement.innerText.split('\n')[0];
+    console.log(groupName);
+    console.log(loadPictureWithGroupName(groupName));
 }
 
 
-function loadPictureWithId(id){
+function loadPictureWithGroupName(groupName){
     var xhr = new XMLHttpRequest();
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
            console.log(xhr);
            var imgElement = document.getElementById('imgToLoad');
-           imgElement.src = 'uploads/' + xhr.responseText;
-           console.log(imgElement);
+           var pathToFolder = 'uploads/' + xhr.responseText;
+        //    imgElement.src = 
+           console.log(pathToFolder);
         }
     }
-    xhr.open('GET', '../php/get_img_with_id.php?id=' + id, true);
+    console.log(groupName);
+    xhr.open('GET', '../php/get_img_annotations.php?groupName=' + groupName, true);
     xhr.send(null);
 }
