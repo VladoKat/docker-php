@@ -9,7 +9,7 @@ $result = $db->query($sql);
       
 while($row = $result->fetch_assoc()) {
     // echo "id: " . $row["ID"]. " - Name: " . $row["FILE_NAME"];
-    echo $row["ID"] . '- ' . $row["FILE_NAME"];
+    echo $row["ID"] . "- " . $row["FILE_NAME"] . "\n";
 }
 
 ?>

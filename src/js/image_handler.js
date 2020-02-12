@@ -5,10 +5,19 @@ function listImages() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             var list = document.getElementById('img_names_ul');
-            var entry = document.createElement('li');
-            entry.addEventListener("click", myScript);
-            entry.innerHTML = xhr.responseText;
-            list.appendChild(entry);
+            list.innerHTML = '';
+            var arrImgs = xhr.responseText.split("\n");
+            console.log(arrImgs);
+            
+            arrImgs.forEach(imgText => {
+                console.log(imgText);
+                if(imgText != ""){
+                    var entry = document.createElement('li');
+                    entry.addEventListener("click", handleClickOnImg);
+                    entry.innerHTML = imgText;
+                    list.appendChild(entry);
+                }
+            });
         }
     }
     xhr.open('GET', '../php/get_img_names.php', true);
@@ -18,6 +27,26 @@ function listImages() {
     return false;
 }
 
-function myScript(){
-    console.log("hello");
+function handleClickOnImg(event){
+    console.log(event.srcElement.innerText);
+    console.log(event);
+    var id = event.srcElement.innerText.split('-')[0];
+    console.log(id);
+    console.log(loadPictureWithId(id));
+}
+
+
+function loadPictureWithId(id){
+    var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+           console.log(xhr);
+           var imgElement = document.getElementById('imgToLoad');
+           imgElement.src = 'uploads/' + xhr.responseText;
+           console.log(imgElement);
+        }
+    }
+    xhr.open('GET', '../php/get_img_with_id.php?id=' + id, true);
+    xhr.send(null);
 }
