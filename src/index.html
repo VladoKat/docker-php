@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" type="text/css" href="master.css">
+    <meta charset="utf-8"/>
     <script src="js/image_handler.js"></script>
+    <script src="js/webgl-fmi.js"></script>
+    <script src="js/shaders.js"></script>
+    <script src="js/pano_logic.js"></script>
+    
 <body>
+<div id = "index">
+    <h1>Pano Viewer</h1>
 
-<h1>Hello</h1>
-<!-- <form action="php/file_upload.php" method="post" enctype="multipart/form-data">
-    Select Image File to Upload:
-    <input type="file" name="file">
-    <input type="submit" name="submit" value="Upload">
-</form> -->
+    <form action="php/multiple_file_upload.php" method="post" enctype="multipart/form-data">
+        <label>Select Image Files to Upload:</label>  
+        <input type="file" name="files[]" multiple />
+        <label >Panorama Name: </label>
+        <input type="text" name="fileGroupName"/>
+        <input type="submit" name="submit" value="UPLOAD"/>
+    </form>
 
-<form action="php/multiple_file_upload.php" method="post" enctype="multipart/form-data">
-    <label>Select Image Files to Upload:</label>  
-    <input type="file" name="files[]" multiple />
-    <label >Panorama Name: </label>
-    <input type="text" name="fileGroupName"/>
-    <input type="submit" name="submit" value="UPLOAD"/>
-</form>
+    <ul id="img_names_ul">
 
-<ul id="img_names_ul">
-
-</ul>
-<button onclick="listImages()">List images</button>
-<br>
-<img id = "imgToLoad" alt="No picture loaded">
+    </ul>
+    <button onclick="listImages()">List images</button>
+    <br>
+</div>
+<div id = "picture" display="none" >
+    <h2>Кубична текстура</h2>
+    
+	<noscript>
+		Искаме JavaScript, но няма!
+	</noscript>
+	
+	<canvas id="picasso" style="border: solid;">
+		Искаме canvas, но няма!
+	</canvas>
+	<div id="annotations">
+    </div>
+    <button onclick="changeVisibility()">Back</button>
+</div>
 
 </body>
 </html>

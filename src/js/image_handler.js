@@ -1,3 +1,4 @@
+
 function listImages() {
     // AJAX CALL
     var xhr = new XMLHttpRequest();
@@ -43,12 +44,38 @@ function loadPictureWithGroupName(groupName){
         if (xhr.readyState == XMLHttpRequest.DONE) {
            console.log(xhr);
            var imgElement = document.getElementById('imgToLoad');
-           var pathToFolder = 'uploads/' + xhr.responseText;
-        //    imgElement.src = 
+           var pathToFolder = '../uploads/' + groupName;
            console.log(pathToFolder);
+           console.log(xhr.responseText);
+           generate360Picture(pathToFolder, xhr.responseText.split('\n'));
         }
     }
     console.log(groupName);
     xhr.open('GET', '../php/get_img_annotations.php?groupName=' + groupName, true);
     xhr.send(null);
+}
+
+function generate360Picture(pathToFolder, annotations){
+    console.log("Doing loadin");
+    console.log(pathToFolder);
+    console.log(annotations);
+    document.getElementById("index").style.display = "none";
+    document.getElementById("picture").style.display = "block";
+    start(pathToFolder);
+    for(var i = 0 ; i < annotations.length - 1; i++){
+        annotationMeta = annotations[i].split(';');
+        annotationText = annotationMeta[0];
+        annotationX = annotationMeta[1];
+        annotationY = annotationMeta[2];
+        annotationZ = annotationMeta[3];
+        
+        loadPin([parseFloat(annotationX), parseFloat(annotationY), parseFloat(annotationZ)], annotationText);
+    }
+    
+    console.log("after init");
+}
+
+function changeVisibility(){
+    document.getElementById("index").style.display = "block";
+    document.getElementById("picture").style.display = "none";
 }
