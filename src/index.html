@@ -12,7 +12,7 @@
     <h1>360 Viewer</h1>
 
     <div id = "form">
-        <form onSubmit="return onSubmit(event)" method="post" enctype="multipart/form-data">
+        <form action="php/multiple_file_upload.php" method="post" enctype="multipart/form-data">
             <label for = "file-picker">Select Image Files to Upload:</label>  
             <input id="file-picker" type="file" name="files[]" multiple class="inputfile"/>
             <label for="file-name">Panorama Name: </label>
@@ -22,13 +22,12 @@
 
     </div>
     <div id = "list">
-        <button onclick="listImages()">List images</button>
+        <button id="list_imgs" onclick="listImages()">List images</button>
         <ul id="img_names_ul"></ul>
     </div>
 </div>
 <div id = "picture" display="none" >
     <h2>360 Viewer</h2>
-    
 	<noscript>
 		Искаме JavaScript, но няма!
 	</noscript>
@@ -38,7 +37,8 @@
 	</canvas>
 	<div id="annotations">
     </div>
-    <button onclick="changeVisibility()">Back</button>
+    <button onclick="changeVisibility()" id="close-btn" class="close">Close</button>
+    <!-- <button onclick="changeVisibility()">Back</button> -->
 </div>
 
 </body>

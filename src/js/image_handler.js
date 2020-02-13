@@ -1,26 +1,6 @@
-
-function onSubmit(event){
-    event.preventDefault();
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", '../php/multiple_file_upload.php', true);
-    const FD = new FormData( event.target );
-    console.log(event.target);
-    
-    console.log(FD);
-    
-    //Send the proper header information along with the request
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function() { // Call a function when the state changes.
-        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            console.log("successful pin save");
-        }
-    }
-    xhr.send(FD);
-}
-
 function listImages() {
     // AJAX CALL
+    var xhr = new XMLHttpRequest();
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
