@@ -23,10 +23,6 @@ h2{
   display: none;
 }
 
-button {
-  float: right;
-  margin: 10px;
-}
 
 
 
@@ -34,111 +30,78 @@ button {
 html {
   font-family: sans-serif;
 }
-p {
-  font-family: sans-serif;
-  text-align: justify;
-  font-size: 18px;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-h3 {
-  font-size: 20px;
-  padding: 10px;
-  text-align: center;
-  font-family: sans-serif;
-  background-color: LightGreen;
-  color: white;
 
-  border-width: 5px;
-  border-style: dotted;
-  border-color: black;
-  border-radius: 8px;
+
+input[type=text], input[type=file] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit], button {
+  width: 100%;
+  background-color:rgb(255,191,0);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-h1 {
-  /* margin-left: 50px;
-  margin-right: 50px; */
-  font-size: 30px;
-  padding: 10px;
-  text-align: center;
-  font-family: sans-serif;
-  /* background-color: rgb(152, 189, 41); */
-  color: white;
-  background-color: LightSalmon;
-  border-width: 10px;
+input[type=submit]:hover {
+  background-color: rgb(255,191,0);
+}
+
+form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  /* position:absolute; */
+  display: block;
+}
+
+#form, ul{
+  border:rgb(255,191,0);
+  border-width: 4px;
   border-style: solid;
-  border-color: black;
-  border-radius: 80px;
+  border-radius: 10px;
 }
-
-.file-content {
-  border-left: 5px solid Teal;
-  font-family: monaco;
-  font-size: 14px;
-  border-radius: 8px;
-  background-color: LightGoldenRodYellow;
-  margin-right: 500px;
-  color: black;
-  padding: 3px;
-}
-
-.shell-code {
-  background-color: black;
-  /* border-left: 5px solid Teal; */
-  margin-right: 500px;
-  font-family: monaco;
-  font-size: 14px;
-  color: white;
-  margin-left: 0px;
-  padding: 3px 5px;
-  margin-bottom:0px;
-  margin-top: 0px;
-}
-
-/* p.shell-code + p.shell-code, p.shell-code > ul.shell-code {
-  margin-bottom:0px;
-  margin-top: 0px;
-} */
-
-.shell-code::first-letter{
-  color: yellow;
-}
-
-p ~ ul{
-  margin-left: 50px;
-}
-p ~ ol:not(#main-tutorial)  {
-  margin-left: 50px;
-}
-
-mark {
-  font-family: monaco;
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: Lavender;
-  padding-left: 3px;
-  padding-right: 3px;
+#list {
+  border-style: solid;
+  border:rgb(255,191,0);
 }
 
 
-ol.main-tutorial li{
-  font-size: 20px;
-  font-weight: bold;
-  border-bottom: 3px dotted black;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-right: 50px;
+#index {
+  display: block;
 }
 
-ol.main-tutorial > p{
-  margin-left: 0px;
+ 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-
+ 
 li {
-  font-size: 18px;
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 100%;
+}
+ 
+li:last-child {
+  border: none;
 }
 
-pre {
-  font-family: sans-serif;
-  color: Gray;
+li:hover {
+  font-size: 30px;
+  background: #f6f6f6;
+  border-radius: 10px;
 }

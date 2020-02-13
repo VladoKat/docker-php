@@ -9,21 +9,22 @@
     
 <body>
 <div id = "index">
-    <h1>Pano Viewer</h1>
+    <h1>360 Viewer</h1>
 
-    <form action="php/multiple_file_upload.php" method="post" enctype="multipart/form-data">
-        <label>Select Image Files to Upload:</label>  
-        <input type="file" name="files[]" multiple />
-        <label >Panorama Name: </label>
-        <input type="text" name="fileGroupName"/>
-        <input type="submit" name="submit" value="UPLOAD"/>
-    </form>
+    <div id = "form">
+        <form onSubmit="return onSubmit(event)" method="post" enctype="multipart/form-data">
+            <label for = "file-picker">Select Image Files to Upload:</label>  
+            <input id="file-picker" type="file" name="files[]" multiple class="inputfile"/>
+            <label for="file-name">Panorama Name: </label>
+            <input id="file-name"type="text" name="fileGroupName" value="name"/>
+            <input type="submit" name="submit" value="UPLOAD"/>
+        </form>
 
-    <ul id="img_names_ul">
-
-    </ul>
-    <button onclick="listImages()">List images</button>
-    <br>
+    </div>
+    <div id = "list">
+        <button onclick="listImages()">List images</button>
+        <ul id="img_names_ul"></ul>
+    </div>
 </div>
 <div id = "picture" display="none" >
     <h2>360 Viewer</h2>
