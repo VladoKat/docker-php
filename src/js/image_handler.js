@@ -78,4 +78,18 @@ function generate360Picture(pathToFolder, annotations){
 function changeVisibility(){
     document.getElementById("index").style.display = "block";
     document.getElementById("picture").style.display = "none";
+    removeAllAnnotations();
+}
+
+function removeAllAnnotations()
+{
+    var element = document.getElementById("annotations");
+    while(element.firstChild)
+    {
+        element.removeChild(element.firstChild);
+    }
+    globalIndex = 0;
+    drawData = [];
+    pinsCoords = [];
+    pinsText = [];
 }
