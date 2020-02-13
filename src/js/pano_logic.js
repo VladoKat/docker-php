@@ -390,8 +390,12 @@ function imageLoaded3D(texture,image,side)
 
 function start(folderPath, annotations)
 {
-    let folderPathArray = folderPath.slice('/');
-    pictureGroupName = folderPath[folderPath.length-1]
+    let folderPathArray = folderPath.split('/');
+    console.log(folderPathArray + "sss");
+    
+    pictureGroupName = folderPathArray[folderPathArray.length-1]
+    console.log("group name: " + pictureGroupName);
+    
     var	canvas = document.getElementById("picasso");
     canvas.addEventListener('webglcontextlost',function(event){event.preventDefault();},false);
     canvas.addEventListener('webglcontextrestored',function(){init();},false);
@@ -616,13 +620,14 @@ function clickSave(event)
     pinsText.push(string);
     
     var pos = pinsCoords[index];
+    console.log(pos);
+    
     var text = pinsText[index];
-    saveToPinDatabase(pos[0], pos[1], pos[2], text);
+    savePinToDatabase(pos[0][0], pos[0][1], pos[0][2], text);
 }
 
 function savePinToDatabase(x, y, z, text)
 {
-    pictureGroupName
     var xhr = new XMLHttpRequest();
     xhr.open("POST", '../php/save_pin.php', true);
 
@@ -632,9 +637,14 @@ function savePinToDatabase(x, y, z, text)
     xhr.onreadystatechange = function() { // Call a function when the state changes.
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
             console.log("successful pin save");
-            
         }
     }
+    console.log("fileGroupName="+ pictureGroupName 
+    + "&annotationText=" + text 
+    + "&x=" + x
+    + "&y=" + y
+    + "&z=" + z);
+    
     xhr.send("fileGroupName="+ pictureGroupName 
     + "&annotationText=" + text 
     + "&x=" + x
